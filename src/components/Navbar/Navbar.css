@@ -1,0 +1,97 @@
+.app__navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  padding: 0.5rem 1.5rem;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
+
+  position: sticky;
+}
+.app__navbar-left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 2;
+}
+.hamburger{
+    display: none;
+    margin-right: 0.5rem;
+}
+.app__navbar-left span{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.app__navbar-center{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 3;
+    width: auto;
+}
+.app__navbar-center_search{
+    position: relative;
+    width: 93%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.app__navbar-center_search input{
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 1.5rem;
+    outline: none;
+    margin-right: 0.5rem;
+
+}
+.app__navbar-center_search button{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    padding: 0.4rem 1.4rem;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius:0 1.5rem 1.5rem  0;
+    cursor: pointer;
+}
+.mobile-search_icons{
+    display: none;
+}
+.app__navbar-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 2;
+    gap: 1rem;
+}
+@media screen and (max-width:1200px){
+    .hamburger{
+        display: flex;
+    }
+    
+}
+@media screen and (max-width:650px) {
+    .app__navbar{
+        padding: 0.5rem 0.7rem;
+        
+    }
+    .hamburger{
+        display: flex;
+    }
+    .app__navbar-center{
+        display: none;
+    }
+    .mobile-search_icons{
+            display: flex;
+            align-items: center;
+
+           
+    }
+    .app__navbar-right{
+        gap: 0.4rem;
+    }
+    
+}

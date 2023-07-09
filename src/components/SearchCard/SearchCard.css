@@ -1,0 +1,62 @@
+.app__searchcard {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+}
+.app__searchcard-img {
+  min-width: 22rem;
+  height: 12rem;
+  position: relative;
+}
+.videolength {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: white;
+  font-weight: 600;
+}
+
+.app__searchcard-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+.app__searchcard-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.app__searchcard-content h1 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+.app__searchcard-content div:nth-child(2) {
+  font-size: small;
+  font-weight: 500;
+  color: rgb(85, 85, 85);
+  margin-bottom: 1.5rem;
+}
+
+.app__searchcard-content_channel {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.app__searchcard-content_channel img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.app__searchcard-content_channel h2 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(163, 161, 161);
+  margin-left: 1rem;
+}
+.app__searchcard-content p {
+  font-size: 1rem;
+  font-weight: normal;
+}

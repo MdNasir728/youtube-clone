@@ -1,0 +1,73 @@
+.app__card {
+  max-width: 24rem;
+  height: auto;
+}
+
+.app__card-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.app__card-img {
+  width: 100%;
+  height: 60%;
+}
+.app__card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.app__card-detail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 0.7rem;
+}
+.app__card-detail_channelLogo {
+  width: 2.5rem;
+  height: 2.5rem;
+  /* margin-right: 1rem; */
+  flex-shrink: 0;
+}
+.app__card-detail_channelLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.app__card-detail_content {
+  margin-left: 0.7rem;
+}
+.app__card-detail_content h1 {
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.app__card-detail_content p {
+  color: rgb(40, 41, 59);
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-top: 0.7rem;
+  font-weight: 700;
+}
+.app__card-detail_content span{
+  font-size: small;
+}
+@media screen and (max-width: 800px) {
+  .app__card {
+    width: 100%;
+    height: auto;
+  }
+  .app__card-detail_content span {
+    display: flex;
+    gap: 8px;
+  }
+}
+.videolength{
+  color: black;
+}

@@ -1,0 +1,238 @@
+.app__videodetail{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 3rem;
+}
+.app__videodetail-left{
+    display: grid;
+    grid-template-columns: 1 minmax(20rem, 1fr);
+    flex: 2;
+}
+.app__videodetail-left_player{
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+.reactplayer{
+    width: 100% !important;
+    
+}
+
+.app__videodetail-left_player h1{
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    /* line-height: 3rem; */
+}
+.left_player-wrapper{
+    display: flex;
+    align-items: center;
+   justify-content: space-between;
+
+}
+.left_player-wrapper_channel{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex:1;
+    gap: 1rem;
+}
+.wrapper_channel-logo{
+    width: 2.7rem;
+    height: 2.7rem;
+    
+}
+.wrapper_channel-logo img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.wrapper_channel-name{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+.wrapper_channel-name span:nth-child(1){
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.wrapper_channel-name span:nth-child(2){
+    font-size: 0.8rem;
+    color:lightslategray;
+    font-weight: 200;
+}
+.left_player-wrapper_channel button{
+    background-color: black;
+    color: white;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+}
+.left_player-wrapper_social{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex:1;
+    gap: 1rem;
+}
+.wrapper_social-like{
+    display: flex;
+    align-items: center;justify-content: center;
+    border: 1px solid grey;
+    padding: 2px 7px;
+    border-radius: 1rem;
+    gap: 2px;
+}
+.wrapper_social-like span{
+    font-size: 0.8rem;
+    border-right: 1px solid lightgray;
+    padding-right: 4px;
+}
+.app__videodetail-left_desc{
+    background-color: #f0f0f0;
+    border-radius: 1rem;
+    width: 100%;
+    height: fit-content;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+.left_desc-heading{
+    font-size: 1rem;
+    font-weight: 500;
+    gap: 1rem;
+    line-height: 1.5rem;
+}
+
+.left_comment-heading{
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 3rem;
+}
+.left_comment-content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.left_comment-content_logo{
+    width: 2.7rem;
+    height: 2.7rem;    margin-right: 1rem;
+
+
+}
+.left_comment-content_logo img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.left_comment-content_name{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-right: 1rem;
+}
+.left_comment-content_name div{
+    display: flex;
+    align-items: center;
+}
+.left_comment-content_name h4{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-right: 1rem;
+}
+.left_comment-content_name span{
+    font-size: small;
+    font-weight: 500;
+}
+
+.left_comment-content_name button{
+    background-color: rgb(230, 230, 230);
+    color: rgb(0, 0, 0);
+    font-size: 0.8rem;
+    font-weight: 300;
+    width: fit-content;
+    padding: 2px 6px;
+    border-radius: 1rem;
+    border: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.app__videodetail-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1px;
+    margin-left: 1rem;
+}
+.right_card{
+    display: flex;
+    margin-bottom: 1rem;
+
+}
+.right_card-thumbnail{
+    width: 8rem;
+    height: 5rem;
+    position: relative;
+}
+.right_card-thumbnail img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    cursor: pointer;
+
+}
+.right_card-content{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    flex: 1;
+}
+.right_card-content h1{
+    font-size: 0.9rem;
+    text-overflow: ellipsis;
+    margin-bottom: 0.2rem;
+    cursor: pointer;
+}
+.right_card-content h2{
+    font-size: 0.8rem;
+    font-weight: 400;
+
+}
+.right_card-content div{
+    gap: 1rem;
+    color: rgb(78, 78, 78);
+    font-size: 0.8rem;
+}
+@media screen and (max-width:900px) {
+    .app__videodetail{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+       gap: 2rem;
+        padding: 5px;
+
+    }
+    
+}
+@media screen and (max-width:650px) {
+    
+
+    .left_player-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+}

@@ -1,0 +1,41 @@
+.app__feed-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: sticky;
+  top: 72.15px;
+  height: 100%;
+  animation: slide 0.3s ease-in;
+  cursor: pointer;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.app__feed-sidebar_icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  padding: 0.3rem 1rem;
+  border-radius: 1rem;
+}
+.app__feed-sidebar_icon:hover {
+  background-color: #ecebeb;
+}
+.app__feed-sidebar_icon span {
+  margin-right: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.active{
+  color: red;
+}

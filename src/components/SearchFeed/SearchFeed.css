@@ -1,0 +1,23 @@
+.app__searchfeed {
+  display: flex;
+}
+.app__searchfeed-container{
+    flex: 1;
+}
+.app__searchfeed-mobile_container {
+  display: none;
+}
+@media screen and (max-width: 700px) {
+  .app__searchfeed {
+    padding: 0.2rem;
+  }
+  .app__searchfeed-container {
+    display: none;
+  }
+  .app__searchfeed-mobile_container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 1.5rem;
+  }
+}
