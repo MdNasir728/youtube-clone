@@ -8,7 +8,6 @@ import LoadingBar from 'react-top-loading-bar'
 import {
   MdOutlineNotifications,
   MdKeyboardVoice,
-  MdClose,
 } from "react-icons/md";
 import { AiFillYoutube, AiOutlineSearch } from "react-icons/ai";
 import { context } from "../../utils/AppContext";
@@ -16,13 +15,15 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [progress, setProgress] = useState(0)
+  const [enterKey, setEnterKey] = useState('')
 
   const { mobileMenu, setMobileMenu, searchKey, setSearchKey } =
     useContext(context);
     const navigate = useNavigate()
 const searchHandler=(e)=>{
-  if (e.key==='Enter' || e === 'searchbutton' && searchKey?.length>0) {
+  if ((e.key==='Enter' || e === 'searchbutton') && enterKey?.length>0) {
     navigate(`/search/${searchKey}`)
+    setSearchKey(enterKey)
     
   }
 }
@@ -46,11 +47,11 @@ const searchHandler=(e)=>{
       <div className="app__navbar-center">
         <div className="app__navbar-center_search">
           <input
-            onChange={(e) => setSearchKey(e.target.value)}
+            onChange={(e)=> setEnterKey(e.target.value)}
             onKeyUp={searchHandler}
             type="text"
             placeholder="Search..."
-            value={searchKey}
+            value={enterKey}
           />
           <button type="button" onClick={() => searchHandler("searchbutton")}>
             <AiOutlineSearch size={20} />

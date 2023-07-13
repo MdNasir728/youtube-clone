@@ -5,7 +5,6 @@ import { context } from "../../utils/AppContext";
 
 const Feed = () => {
   const {loading, mobileMenu, searchResults } = useContext(context);
-  console.log(searchResults);
   return (
     <div className="app__feed section__padding">
       <div className="app__feed-sidebar_container">

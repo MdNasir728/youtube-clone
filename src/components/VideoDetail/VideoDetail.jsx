@@ -1,34 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./VideoDetail.css";
 import { abbreviateNumber } from "js-abbreviation-number";
 import ReactPlayer from "react-player";
 import { AiFillLike, AiFillDislike, AiOutlineShareAlt } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchDataFromApi } from "../../utils/Api";
+// import { fetchDataFromApi } from "../../utils/Api";
 // import VideoLength from "../../utils/VideoLength";
+import { context } from "../../utils/AppContext";
 
 const VideoDetail = () => {
-  const [data, setData] = useState({});
-  const [relatedData, setRelatedData] = useState([]);
+  // const [data, setData] = useState({});
+  // const [relatedData, setRelatedData] = useState([]);
   const { id } = useParams();
-  const navigate = useNavigate()
+  const { setId, data, relatedData } = useContext(context);
+  setId(id);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchVideoDetail();
-    fetchRelatedVideo();
-  }, [id]);
+  // useEffect(() => {
+  //   fetchVideoDetail();
+  //   fetchRelatedVideo();
+  // }, [id]);
 
-  const fetchVideoDetail = () => {
-    fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
-      setData(res);
-    });
-  };
+  // const fetchVideoDetail = () => {
+  //   fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
+  //     setData(res);
+  //   });
+  // };
 
-  const fetchRelatedVideo = () => {
-    fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
-      setRelatedData(res.contents);
-    });
-  };
+  // const fetchRelatedVideo = () => {
+  //   fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
+  //     setRelatedData(res.contents);
+  //   });
+  // };
   return (
     <div className="app__videodetail">
       <div className="app__videodetail-left">
@@ -74,25 +77,29 @@ const VideoDetail = () => {
           </div>
           <div className="left_desc-content">{data.description}</div>
         </div>
-        
       </div>
       <div className="app__videodetail-right">
         {relatedData?.map((item, i) => {
           return (
             <div className="right_card" key={i}>
               <div className="right_card-thumbnail">
-                <img onClick={()=>navigate(`/video/${item?.video?.videoId}`)}
+                <img
+                  onClick={() => navigate(`/video/${item?.video?.videoId}`)}
                   src={item?.video?.thumbnails?.[0]?.url}
                   alt=""
                 />
-                
               </div>
               <div className="right_card-content">
-                <h1 onClick={()=>navigate(`/video/${id}`)}>{item?.video?.title.slice(0, 50)}...</h1>
+                <h1 onClick={() => navigate(`/video/${id}`)}>
+                  {item?.video?.title.slice(0, 50)}...
+                </h1>
 
                 <h2>{item?.video?.author?.title}</h2>
                 <div>
-                  <span>{`${abbreviateNumber(item?.video?.stats?.views,2)} Views--`}</span>
+                  <span>{`${abbreviateNumber(
+                    item?.video?.stats?.views,
+                    2
+                  )} Views--`}</span>
                   <span>{item?.video?.publishedTimeText}</span>
                 </div>
               </div>
