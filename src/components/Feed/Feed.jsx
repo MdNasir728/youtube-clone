@@ -18,9 +18,8 @@ const Feed = () => {
       )}
       <div className="app__feed-content">
         {loading? <h1>Loading...</h1>:searchResults?.map((result, i) => (
-          <div className="videocard_wrapper">
+          <div className="videocard_wrapper" key={i}>
             <VideoCard
-              key={i}
               url={result?.video?.thumbnails[1]?.url}
               Clogo={result?.video?.author?.avatar?.map((url) => url.url)}
               title={result?.video?.title}

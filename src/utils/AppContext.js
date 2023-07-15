@@ -1,7 +1,15 @@
 import React, { createContext, useState, useEffect } from "react";
-
-import { fetchDataFromApi } from "./Api";
+import axios from "axios";
 export const context = createContext();
+const BASE_URL = "https://youtube138.p.rapidapi.com";
+
+const options = {
+  params: { maxResults: "50" },
+  headers: {
+    "X-RapidAPI-Key": process.env.REACT_APP_YOUTUBE_API_KEY,
+    "X-RapidAPI-Host": "youtube138.p.rapidapi.com",
+  },
+};
 
 export const AppContext = (props) => {
   const [loading, setLoading] = useState(false);
@@ -12,6 +20,83 @@ export const AppContext = (props) => {
   const [data, setData] = useState({});
   const [relatedData, setRelatedData] = useState([]);
   const [id, setId] = useState("");
+
+  const fetchSelectedCategoryData = async (url) => {
+    setLoading(true);
+
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/search/?part=snippet&q=${url}`,
+        options
+      );
+      setSearchResults(response.data.contents);
+    } catch (error) {
+      if (error.response) {
+        console.log(
+          "Server responded with status code:",
+          error.response.status
+        );
+        console.log("Response data:", error.response.data);
+      } else if (error.request) {
+        console.log("No response received:", error.request);
+      } else {
+        console.log("Error creating request:", error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+  const fetchVideoDetail = async (url) => {
+    setLoading(true);
+
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/video/details/?id=${url}`,
+        options
+      );
+      setData(response.data);
+    } catch (error) {
+      if (error.response) {
+        console.log(
+          "Server responded with status code:",
+          error.response.status
+        );
+        console.log("Response data:", error.response.data);
+      } else if (error.request) {
+        console.log("No response received:", error.request);
+      } else {
+        console.log("Error creating request:", error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+  const fetchRelatedVideo = async (url) => {
+    setLoading(true);
+
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/video/related-contents/?id=${url}`,
+        options
+      );
+      setRelatedData(response.data.contents);
+    } catch (error) {
+      if (error.response) {
+        console.log(
+          "Server responded with status code:",
+          error.response.status
+        );
+        console.log("Response data:", error.response.data);
+      } else if (error.request) {
+        console.log("No response received:", error.request);
+      } else {
+        console.log("Error creating request:", error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchSelectedCategoryData(selectedCategory);
   }, [selectedCategory]);
@@ -20,41 +105,9 @@ export const AppContext = (props) => {
   }, [searchKey]);
 
   useEffect(() => {
-    fetchVideoDetail(id);
-    fetchRelatedVideo(id);
+    fetchVideoDetail();
+    fetchRelatedVideo();
   }, [id]);
-  
-
-  const fetchVideoDetail = (id) => {
-    fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
-      setData(res);
-    });
-  };
-
-  const fetchRelatedVideo = (id) => {
-    fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
-      setRelatedData(res.contents);
-    });
-  };
-
-  const fetchSelectedCategoryData = (query) => {
-    setLoading(true);
-    fetchDataFromApi(`search/?part=snippet&q=${query}`)
-      .then((res) => {
-        setSearchResults(res.contents);
-        setLoading(false);
-      })
-      .catch(function (error) {
-        if (error.response) {
-          console.log('Server responded with status code:', error.response.status);
-          console.log('Response data:', error.response.data);
-        } else if (error.request) {
-          console.log('No response received:', error.request);
-        } else {
-          console.log('Error creating request:', error.message);
-        }
-      });
-  };
 
   return (
     <context.Provider

@@ -16,15 +16,15 @@ const Sidebar = () => {
   return (
     <div className="app__feed-sidebar">
       {categories.map((category, i) => (
-        <NavLink to={`/${category.name}`}>
+        <NavLink to={`/${category.name}`} key={i}>
           <div
-            key={i}
             className="app__feed-sidebar_icon"
             onClick={()=>handleClick(category.type, category.name)}
           >
             <span>{category.icon}</span>
             <span>{category.type === "home" ? "Home" : category.name}</span>
           </div>
+          {category.divider && <div style={{backgroundColor: 'grey', height: '2px', width: '100%'}}/> }
         </NavLink>
       ))}
     </div>

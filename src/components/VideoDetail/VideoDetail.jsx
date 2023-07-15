@@ -4,34 +4,16 @@ import { abbreviateNumber } from "js-abbreviation-number";
 import ReactPlayer from "react-player";
 import { AiFillLike, AiFillDislike, AiOutlineShareAlt } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router-dom";
-// import { fetchDataFromApi } from "../../utils/Api";
-// import VideoLength from "../../utils/VideoLength";
+
 import { context } from "../../utils/AppContext";
+import VideoLength from "../../utils/VideoLength";
 
 const VideoDetail = () => {
-  // const [data, setData] = useState({});
-  // const [relatedData, setRelatedData] = useState([]);
   const { id } = useParams();
   const { setId, data, relatedData } = useContext(context);
   setId(id);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   fetchVideoDetail();
-  //   fetchRelatedVideo();
-  // }, [id]);
-
-  // const fetchVideoDetail = () => {
-  //   fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
-  //     setData(res);
-  //   });
-  // };
-
-  // const fetchRelatedVideo = () => {
-  //   fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
-  //     setRelatedData(res.contents);
-  //   });
-  // };
   return (
     <div className="app__videodetail">
       <div className="app__videodetail-left">
@@ -40,8 +22,7 @@ const VideoDetail = () => {
             url={`https://www.youtube.com/watch?v=${id}`}
             className="reactplayer"
           />
-          {/* <VideoLength seconds={data?.lengthSeconds
-            }/> */}
+          <VideoLength seconds={data?.lengthSeconds} />
           <h1>{data.title}</h1>
           <div className="left_player-wrapper">
             <div className="left_player-wrapper_channel">
